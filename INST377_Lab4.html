@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title> INST377 - Lab 4 </title>
+        <link rel = "stylesheet" href = "INST377_Lab4_ExternalCSS.css">
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header id = "header">
+            <h1> INST377 Lab 4 - JS Practice </h1>
+        </header>
+
+        <!-- Main DIV -->
+        <div class = "main-div">
+            
+            <!-- DIV Wrapper 1 and 2 -->
+            <div class = "left-column">
+                
+                <section class = "section-box">
+                    <form name = "alertForm" onsubmit = "return(alertFunction())">
+                        <div class = "alertForm">
+                            <label for = "fullName"> Name: </label>
+                            <input type = "text" id = "fullName">
+                            <input type = "submit" class = "input" value = "Alert Me!">
+                        </div>
+                    </form> 
+
+                    <script type = "text/javascript">
+                        function alertFunction() {
+                            let inputValue = document.getElementById("fullName").value;
+                            
+                            if(inputValue === "") { // if statement first to trigger empty string case
+                                alert("Please Enter a Name");
+                                return false;
+                            }
+
+                            alert("Hi, " + inputValue); // else trigger this alert
+                            return false;
+                        }
+                    </script>
+                </section>
+                
+                <section class = "section-box">
+                    <form name = "validateText" onsubmit = "return(formValidation())">
+                        <div class = "alertForm">
+                            <label for = "enterText"> Text Tester: </label>
+                            <input type = "text" id = "enterText">
+                            <input type = "submit" class = "input" value = "Validate Text">
+                        </div>
+                    </form> 
+
+                    <script type = "text/javascript">
+                        var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+                        function formValidation() {
+                            if(validation.test(document.validateText.enterText.value)) {
+                                alert("Please Do NOT Use SQL Injection");
+                                return false;
+                            }
+                        }
+                    </script>
+                </section>
+            </div>
+
+            <!-- DIV Wrapper 3 and 4 -->
+            <div class = "right-column">
+
+                <section class = "section-box">
+                    <button class = "button" onclick = "changeColor()"> Change Color </button>
+                    
+                    <script type = "text/javascript">
+                        function changeColor() {
+                            if(document.body.style.backgroundColor == 'plum') { // if plum is true
+                                let t = document.body.style.backgroundColor = 'mediumPurple'; // switch toggle to false
+                            } else {
+                                let t = document.body.style.backgroundColor = 'plum'; // otherwise toggle back to true
+                            }
+                        }
+                    </script>
+                </section>
+
+                <section class = "section-box">
+                    <button class = "button" onclick = "addText()"> Add Text </button>
+
+                    <script type = "text/javascript">
+                        function addText() {
+                            let header = document.getElementById("header");
+
+                            if(header.innerHTML === "<h1> INST377 Lab 4 - JS Practice - Adding Text </h1>") {
+                                header.innerHTML = "<h1> INST377 Lab 4 - JS Practice </h1>";
+                            } else {
+                                header.innerHTML = "<h1> INST377 Lab 4 - JS Practice - Adding Text </h1>";
+                            }
+                        }
+                    </script>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
